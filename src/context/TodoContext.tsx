@@ -41,11 +41,35 @@ export function TodoProvider({ children }: TodoProviderProps) {
 	//TODO:store Todos when the todos array changes
 	useEffect(() => {}, []);
 	//Todos: Action
-	const addTodo = () => {};
-	const deleteTodo = () => {};
-	const editTodo = () => {};
-	const toggleTodo = () => {};
-	const clearCompleted = () => {};
+	const addTodo = (taskText: string) => {
+		//id
+		const id = Date.now().toString();
+		const addTodoList = [
+			{ id: id, text: taskText, completed: false },
+			...todos,
+		];
+		setTodos(addTodoList);
+	};
+	const deleteTodo = (id: string) => {
+		const updateTodoList = todos.filter((todo) => todo.id !== id);
+		setTodos(updateTodoList);
+	};
+	const editTodo = (updatedTodoText: string, id: string) => {
+		const updatedTodo = todos.map((todo) =>
+			todo.id === id ? { ...todo, text: updatedTodoText } : todo
+		);
+		setTodos(updatedTodo);
+	};
+	const toggleTodo = (id: string) => {
+		const updatedTodo = todos.map((todo) =>
+			todo.id === id ? { ...todo, completed: !todo.completed } : todo
+		);
+		setTodos(updatedTodo);
+	};
+	const clearCompleted = () => {
+		const updateTodoList = todos.filter((todo) => todo.completed !== true);
+		setTodos(updateTodoList);
+	};
 
 	return (
 		<TodoContext.Provider
