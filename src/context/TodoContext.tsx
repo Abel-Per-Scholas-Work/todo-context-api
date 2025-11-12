@@ -8,27 +8,27 @@ const data = [
 	{
 		id: "1",
 		text: "Design landing page",
-		completed: "pending",
+		completed: true,
 	},
 	{
 		id: "2",
 		text: "Set up CI/CD pipeline",
-		completed: "pending",
+		completed: true,
 	},
 	{
 		id: "3",
 		text: "Fix login bug",
-		completed: "in-progress",
+		completed: false,
 	},
 	{
 		id: "4",
 		text: "Write unit tests",
-		completed: "in-progress",
+		completed: false,
 	},
 	{
 		id: "5",
 		text: "Deploy to staging",
-		completed: "completed",
+		completed: false,
 	},
 ];
 
