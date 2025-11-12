@@ -17,7 +17,21 @@ export default function ToDosList() {
 			<h2>Todos List</h2>
 			<div>Filter: {filter}</div>
 			{filteredTodos.map((todo) => (
-				<li key={todo.id}>{todo.text}</li>
+				<div key={todo.id}>
+					<p>
+						<input
+							type="checkbox"
+							name={todo.text}
+							checked={todo.completed}
+							onChange={() => console.log("clicked")}
+						/>
+						{todo.text}
+						<div>
+							<button onClick={() => console.log("edit")}>✏️</button>
+							<button onClick={() => console.log("delete")}>🗑️</button>
+						</div>
+					</p>
+				</div>
 			))}
 		</div>
 	);
