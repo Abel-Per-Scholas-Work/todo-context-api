@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+.light {
+	background-color: #f4f7f9;
+	color: #0e0e0e;
+}
+.light input {
+	background-color: #ffffff;
+	color: #0e0e0e;
+}
+.light button {
+	background-color: #f0f0f0;
+	color: black;
+}
+
+.light button:hover {
+	background-color: #e0e0e0;
+}
+
+.light button.active {
+	background-color: #007bff;
+	color: black;
+}
+.light button.active:hover {
+	background-color: #0056b3;
+	color: black;
+}
+
+.dark {
+	background-color: #1a1a1a;
+	color: #f0f0f0;
+}
+.dark input {
+	background-color: #333333;
+	color: white;
+}
+.dark button {
+	background-color: #f0f0f0;
+	color: #f0f0f0;
+}
+
+.dark button:hover {
+	background-color: #e0e0e0;
+}
+
+.dark button.active {
+	background-color: #007bff;
+	color: #f0f0f0;
+}
+.dark button.active:hover {
+	background-color: #0056b3;
+	color: #f0f0f0;
+}
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
