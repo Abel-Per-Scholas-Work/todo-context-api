@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 
-export default function TodoItem({ todo }) {
-	const [editMode, setEditMode] = useState(false);
+export default function TodoItem({ todo, isEditing, setEditingId }) {
+	// const [editMode, setEditMode] = useState(false);
 	const [todoText, setTodoText] = useState(todo.text);
 
 	const { deleteTodo, toggleTodo, editTodo } = useContext(TodoContext);
@@ -11,21 +11,21 @@ export default function TodoItem({ todo }) {
 		e.preventDefault();
 		//if todo text is empty
 		if (!todoText) {
-			setEditMode(false);
+			setEditingId(false);
 			return;
 		}
 		editTodo(todo.id, todoText);
-		setEditMode(false);
+		setEditingId(false);
 		console.log(todoText);
 	};
 
 	const handleEdit = () => {
-		setEditMode(!editMode);
+		setEditingId(todo.id);
 	};
 
 	return (
 		<div id="todoList">
-			{!editMode ? (
+			{!isEditing ? (
 				<div className=" p-4 flex justify-between border-b-1">
 					<div className="flex gap-x-2">
 						<input
@@ -33,6 +33,7 @@ export default function TodoItem({ todo }) {
 							name={todo.text}
 							checked={todo.completed}
 							onChange={() => toggleTodo(todo.id)}
+							// onBlur={() => setEditingId(null)}
 						/>
 						{todo.text}
 					</div>

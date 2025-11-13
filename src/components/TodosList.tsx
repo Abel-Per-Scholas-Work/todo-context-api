@@ -7,6 +7,8 @@ export default function ToDosList() {
 	const { todos, deleteTodo, toggleTodo } = useContext(TodoContext);
 	const { filter } = useContext(FilterContext);
 	const [activeTodo, setActiveTodo] = useState(0);
+	// for editing one todo per time
+	const [editingId, setEditingId] = useState<string | null>(null);
 
 	const filteredTodos = todos.filter((todo) => {
 		if (filter === "active") return !todo.completed;
@@ -28,7 +30,11 @@ export default function ToDosList() {
 			) : (
 				filteredTodos.map((todo) => (
 					<div key={todo.id}>
-						<TodoItem todo={todo} />
+						<TodoItem
+							todo={todo}
+							isEditing={editingId === todo.id}
+							setEditingId={setEditingId}
+						/>
 					</div>
 				))
 			)}
