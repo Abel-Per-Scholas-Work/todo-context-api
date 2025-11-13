@@ -5,10 +5,28 @@ export default function FilterButton() {
 	const { filter, setFilter } = useContext(FilterContext);
 
 	return (
-		<div>
-			<button onClick={() => setFilter("all")}>All</button>
-			<button onClick={() => setFilter("active")}>Active</button>
-			<button onClick={() => setFilter("completed")}>Completed</button>
+		<div className="flex justify-center gap-x-4">
+			<button
+				className={`px-3 py-2 rounded-sm cursor-pointer ${
+					filter === "all" && "active"
+				}`}
+				onClick={() => setFilter("all")}>
+				All
+			</button>
+			<button
+				className={`px-3 py-2 rounded-sm cursor-pointer ${
+					filter === "active" && "active"
+				}`}
+				onClick={() => setFilter("active")}>
+				Active
+			</button>
+			<button
+				className={`px-3 py-2 rounded-sm cursor-pointer ${
+					filter === "completed" && "active"
+				}`}
+				onClick={() => setFilter("completed")}>
+				Completed
+			</button>
 		</div>
 	);
 }

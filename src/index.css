@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 .light {
+	background-color: white;
+	border-color: grey;
+}
+section.light {
 	background-color: #f4f7f9;
 	color: #0e0e0e;
 }
@@ -26,7 +30,21 @@
 	color: black;
 }
 
+#lightButton {
+	background-color: yellow;
+	color: gray;
+}
+
+.light #todoList {
+	background-color: #fff;
+}
+
 .dark {
+	background-color: black;
+	border-color: grey;
+}
+
+section.dark {
 	background-color: #1a1a1a;
 	color: #f0f0f0;
 }
@@ -35,7 +53,7 @@
 	color: white;
 }
 .dark button {
-	background-color: #f0f0f0;
+	background-color: #444;
 	color: #f0f0f0;
 }
 
@@ -50,6 +68,19 @@
 .dark button.active:hover {
 	background-color: #0056b3;
 	color: #f0f0f0;
+}
+
+#darkButton {
+	background-color: #1a1a1a;
+	color: #e0e0e0;
+}
+
+.dark #todoList {
+	background-color: #444;
+}
+
+input[type="checkbox"] {
+	accent-color: green; /* Example: a shade of blue */
 }
 
 /* :root {

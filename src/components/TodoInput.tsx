@@ -13,19 +13,25 @@ export default function TodoInput() {
 			return;
 		}
 		addTodo(text);
+		setText("");
 	};
 	return (
 		<div>
-			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					placeholder="What needs to be done"
-					value={text}
-					onChange={(e) => setText(e.target.value)}
-					required
-				/>
-				{errortext && <p>Invalid Input</p>}
-				<button>Add todo</button>
+			<form onSubmit={handleSubmit} className="flex gap-x-4">
+				<div className="w-2/3">
+					<input
+						type="text"
+						placeholder="What needs to be done"
+						value={text}
+						onChange={(e) => setText(e.target.value)}
+						required
+						className="p-3 rounded-sm w-full"
+					/>
+					{errortext && <p>Invalid Input</p>}
+				</div>
+				<button className="p-3 rounded-sm active cursor-pointer">
+					Add todo
+				</button>
 			</form>
 		</div>
 	);

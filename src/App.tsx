@@ -9,22 +9,25 @@ import { ThemeContext } from "./context/ThemeContext";
 function App() {
 	const { theme } = useContext(ThemeContext);
 	return (
-		<>
+		<div className={`w-full ${theme === "light" ? "light" : "dark"}`}>
 			<main
-				className={`max-w-[85rem] mx-auto ${
-					theme === "light" ? "light" : "dark"
-				}`}>
-				<header>
-					<div>Todo App (Context API)</div>
-					<div>
-						<ThemeToggleButton />
-					</div>
-				</header>
-				<TodoInput />
-				<FilterButton />
-				<ToDosList />
+				className={`max-w-[85rem] mx-auto flex h-full md:h-screen flex-col justify-center items-center`}>
+				<section
+					className={` w-[50%]  p-8 flex flex-col gap-y-6 ${
+						theme === "light" ? "light" : "dark"
+					}`}>
+					<header className="flex justify-between items-center py-4 border-b-1">
+						<div className="text-3xl ">Todo App (Context API)</div>
+						<div>
+							<ThemeToggleButton />
+						</div>
+					</header>
+					<TodoInput />
+					<FilterButton />
+					<ToDosList />
+				</section>
 			</main>
-		</>
+		</div>
 	);
 }
 

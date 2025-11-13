@@ -24,35 +24,38 @@ export default function TodoItem({ todo }) {
 	};
 
 	return (
-		<>
+		<div id="todoList">
 			{!editMode ? (
-				<div>
-					<input
-						type="checkbox"
-						name={todo.text}
-						checked={todo.completed}
-						onChange={() => toggleTodo(todo.id)}
-					/>
-					{todo.text}
-					<div>
+				<div className=" p-4 flex justify-between border-b-1">
+					<div className="flex gap-x-2">
+						<input
+							type="checkbox"
+							name={todo.text}
+							checked={todo.completed}
+							onChange={() => toggleTodo(todo.id)}
+						/>
+						{todo.text}
+					</div>
+					<div className="flex gap-x-4">
 						<button onClick={handleEdit}>✏️</button>
 						<button onClick={() => deleteTodo(todo.id)}>🗑️</button>
 					</div>
 				</div>
 			) : (
 				<div>
-					<div>
-						<form onSubmit={handleSubmit}>
+					<div className=" p-4 flex justify-between border-b-1">
+						<form onSubmit={handleSubmit} className="w-full">
 							<input
 								type="text"
 								value={todoText}
 								name="todoText"
 								onChange={(e) => setTodoText(e.target.value)}
+								className="focus:border-blue-600 w-full border-1 p-2 border-gray-400"
 							/>
 						</form>
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 }

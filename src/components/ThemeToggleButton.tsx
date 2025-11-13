@@ -8,9 +8,20 @@ export default function ThemeToggleButton() {
 	return (
 		<>
 			{theme === "dark" ? (
-				<button onClick={() => toggleTheme("dark")}>🌞 Switch to Light</button>
+				<button
+					id="lightButton"
+					className="p-4 rounded-sm font-semibold"
+					onClick={() => toggleTheme("dark")}>
+					🌞 Switch to Light
+				</button>
 			) : (
-				<button onClick={() => toggleTheme("light")}> 🌚 Switch to Dark</button>
+				<button
+					id="darkButton"
+					className="p-4 rounded-sm font-semibold"
+					onClick={() => toggleTheme("light")}>
+					{" "}
+					🌚 Switch to Dark
+				</button>
 			)}
 		</>
 	);

@@ -23,10 +23,8 @@ export default function ToDosList() {
 
 	return (
 		<div>
-			<h2>Todos List</h2>
-
 			{filteredTodos.length === 0 ? (
-				<p> No todos yet! Add one above.</p>
+				<p className="p-10 text-center"> No todos yet! Add one above.</p>
 			) : (
 				filteredTodos.map((todo) => (
 					<div key={todo.id}>
@@ -35,7 +33,7 @@ export default function ToDosList() {
 				))
 			)}
 			{activeTodo !== 0 && (
-				<div>
+				<div className="p-4 py-2">
 					{activeTodo} item{activeTodo > 1 && "s"} left
 				</div>
 			)}
