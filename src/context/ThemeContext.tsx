@@ -8,11 +8,15 @@ interface ThemeProviderProps {
 //you can pass a default data or just initiate it with 'null'
 export const ThemeContext = createContext(null);
 
-export function ThemeProveider({ children }: ThemeProviderProps) {
-	const [theme, setTheme] = useState<"light" | "dark">("dark");
+export function ThemeProvider({ children }: ThemeProviderProps) {
+	const [theme, setTheme] = useState<"light" | "dark" | null>("light");
+
+	const toggleTheme = () => {
+		setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+	};
 
 	return (
-		<ThemeContext.Provider value={{ theme, setTheme }}>
+		<ThemeContext.Provider value={{ theme, toggleTheme }}>
 			{children}
 		</ThemeContext.Provider>
 	);

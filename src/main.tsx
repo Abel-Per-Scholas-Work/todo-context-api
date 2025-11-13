@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App.tsx";
 import { TodoProvider } from "./context/TodoContext.tsx";
 import { FilterProvider } from "./context/FilterContext.tsx";
+import { ThemeProvider } from "./context/ThemeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<TodoProvider>
-			<FilterProvider>
-				<App />
-			</FilterProvider>
-		</TodoProvider>
+		<ThemeProvider>
+			<TodoProvider>
+				<FilterProvider>
+					<App />
+				</FilterProvider>
+			</TodoProvider>
+		</ThemeProvider>
 	</StrictMode>
 );
