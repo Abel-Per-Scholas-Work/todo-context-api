@@ -1,4 +1,4 @@
-import { useContext, type FormEvent } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 import { FilterContext } from "../context/FilterContext";
 import TodoItem from "./TodoItem";
@@ -6,6 +6,7 @@ import TodoItem from "./TodoItem";
 export default function ToDosList() {
 	const { todos, deleteTodo, toggleTodo } = useContext(TodoContext);
 	const { filter } = useContext(FilterContext);
+	const [activeTodo, setActiveTodo] = useState(0);
 
 	const filteredTodos = todos.filter((todo) => {
 		if (filter === "active") return !todo.completed;
@@ -13,16 +14,17 @@ export default function ToDosList() {
 		return true;
 	});
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: string) => {
-		e.preventDefault();
-		const target = e.target as HTMLInputElement;
-		console.log(target.name, target.value, "and id is", id);
-	};
+	//keep track of active todos
+	useEffect(() => {
+		const todoNumber = todos.filter((todo) => !todo.completed);
+		console.log(todoNumber.length, todoNumber);
+		setActiveTodo(todoNumber.length);
+	}, [todos]);
 
 	return (
 		<div>
 			<h2>Todos List</h2>
-			<div>Filter: {filter}</div>
+
 			{filteredTodos.length === 0 ? (
 				<p> No todos yet! Add one above.</p>
 			) : (
@@ -31,6 +33,11 @@ export default function ToDosList() {
 						<TodoItem todo={todo} />
 					</div>
 				))
+			)}
+			{activeTodo !== 0 && (
+				<div>
+					{activeTodo} item{activeTodo > 1 && "s"} left
+				</div>
 			)}
 		</div>
 	);
