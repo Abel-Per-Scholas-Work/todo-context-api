@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import type { Filter } from "../type";
 
 interface FilterProviderProps {
 	children: React.ReactNode;
@@ -7,9 +8,7 @@ interface FilterProviderProps {
 export const FilterContext = createContext(null);
 
 export function FilterProvider({ children }: FilterProviderProps) {
-	const [filter, setFilter] = useState<"all" | "active" | "completed" | null>(
-		"all"
-	);
+	const [filter, setFilter] = useState<Filter>("all");
 	return (
 		<FilterContext.Provider value={{ filter, setFilter }}>
 			{children}
