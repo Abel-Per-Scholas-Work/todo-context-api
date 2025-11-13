@@ -50,22 +50,26 @@ export function TodoProvider({ children }: TodoProviderProps) {
 		];
 		setTodos(addTodoList);
 	};
+	//delete
 	const deleteTodo = (id: string) => {
 		const updateTodoList = todos.filter((todo) => todo.id !== id);
 		setTodos(updateTodoList);
 	};
-	const editTodo = (updatedTodoText: string, id: string) => {
+	// edit
+	const editTodo = (id: string, updatedTodoText: string) => {
 		const updatedTodo = todos.map((todo) =>
 			todo.id === id ? { ...todo, text: updatedTodoText } : todo
 		);
 		setTodos(updatedTodo);
 	};
+	//toggle complete
 	const toggleTodo = (id: string) => {
 		const updatedTodo = todos.map((todo) =>
 			todo.id === id ? { ...todo, completed: !todo.completed } : todo
 		);
 		setTodos(updatedTodo);
 	};
+	//clear complete
 	const clearCompleted = () => {
 		const updateTodoList = todos.filter((todo) => todo.completed !== true);
 		setTodos(updateTodoList);

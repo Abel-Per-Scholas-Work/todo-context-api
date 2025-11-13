@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, type FormEvent } from "react";
 import { TodoContext } from "../context/TodoContext";
 import { FilterContext } from "../context/FilterContext";
+import TodoItem from "./TodoItem";
 
 export default function ToDosList() {
 	const { todos, deleteTodo, toggleTodo } = useContext(TodoContext);
@@ -12,6 +13,12 @@ export default function ToDosList() {
 		return true;
 	});
 
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: string) => {
+		e.preventDefault();
+		const target = e.target as HTMLInputElement;
+		console.log(target.name, target.value, "and id is", id);
+	};
+
 	return (
 		<div>
 			<h2>Todos List</h2>
@@ -21,19 +28,7 @@ export default function ToDosList() {
 			) : (
 				filteredTodos.map((todo) => (
 					<div key={todo.id}>
-						<p>
-							<input
-								type="checkbox"
-								name={todo.text}
-								checked={todo.completed}
-								onChange={() => toggleTodo(todo.id)}
-							/>
-							{todo.text}
-							<div>
-								<button onClick={() => console.log("edit")}>✏️</button>
-								<button onClick={() => deleteTodo(todo.id)}>🗑️</button>
-							</div>
-						</p>
+						<TodoItem todo={todo} />
 					</div>
 				))
 			)}
