@@ -24,6 +24,7 @@ export default function TodoInput() {
 						placeholder="What needs to be done"
 						value={text}
 						onChange={(e) => setText(e.target.value)}
+						onKeyDown={(e) => console.log(e.key)}
 						required
 						className="p-3 rounded-sm w-full"
 					/>
